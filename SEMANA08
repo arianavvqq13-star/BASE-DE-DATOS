@@ -209,3 +209,40 @@ PIVOT (
 
 --SEMANA08
 ---PROCEDIMIENTO ALMACENADO
+
+USE SistemaBiblioteca;
+GO
+
+CREATE PROCEDURE ActualizarTelefono
+    @ID INT,
+    @NuevoTel VARCHAR(50)
+AS
+BEGIN
+    UPDATE Usuarios
+    SET Telefono = @NuevoTel
+    WHERE UsuarioID = @ID;
+    
+    PRINT 'Teléfono actualizado correctamente';
+END;
+GO
+
+EXEC ActualizarTelefono 1, '900000000';
+
+CREATE FUNCTION ObtenerNombreLibro
+(
+    @ID INT
+)
+RETURNS VARCHAR(100)
+AS
+BEGIN
+    DECLARE @Nombre VARCHAR(100);
+    
+    SELECT @Nombre = Titulo 
+    FROM Libros 
+    WHERE LibroID = @ID;
+    
+    RETURN @Nombre;
+END;
+GO
+
+SELECT dbo.ObtenerNombreLibro(0) AS NombreDelLibro;
