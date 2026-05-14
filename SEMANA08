@@ -212,7 +212,7 @@ PIVOT (
 
 USE SistemaBiblioteca;
 GO
-
+--PROCEDIMIENTO
 CREATE PROCEDURE ActualizarTelefono
     @ID INT,
     @NuevoTel VARCHAR(50)
@@ -228,6 +228,8 @@ GO
 
 EXEC ActualizarTelefono 1, '900000000';
 
+
+--FUNCION
 CREATE FUNCTION ObtenerNombreLibro
 (
     @ID INT
